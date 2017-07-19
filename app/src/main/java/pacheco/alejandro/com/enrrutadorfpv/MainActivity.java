@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.analytics.FirebaseAnalytics;
 import com.theartofdev.edmodo.cropper.CropImage;
 
 import org.json.JSONArray;
@@ -41,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> addressesList = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         adapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1,
                 addressesList);
@@ -147,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                                                 .getJSONObject(0)
                                                 .get("description")
                                                 .toString();
-
+                                System.out.println("Found: " + description);
                                 validate(description);
                             }
                         } catch (JSONException | IOException e) {
